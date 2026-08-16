@@ -44,6 +44,19 @@ app.command("/raju-catfact",async({ack,respond})=>{
     }
 });
 
+app.command("raju-jike",async({ack,respond})=>{
+    await ack();
+    try{
+        const response = await axios.get("https://official-joke-api.appspot.com/random_joke");
+        await respond({
+            text:
+            `${response.data.setup}
+            
+            `
+        })
+    }
+})
+
 
 (async()=>{
     await app.start();
