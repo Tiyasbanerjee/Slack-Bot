@@ -2,6 +2,10 @@
 
 **Raju** is a smart😎 bot who helps you in real time with English spelling and word meanings📝📝.
 
+[![Watch Raju Bot Demo](https://img.youtube.com/vi/euCq271Imf4/maxresdefault.jpg)](https://youtu.be/euCq271Imf4)
+
+*Click the image above to watch the Raju Bot demo video!*
+
 Suppose you are chatting with someone on Slack, and suddenly the person goes offline😭. Now you are feeling bored😞, so what can you do? Check if Raju is active!📍
 
 ### 1. `/raju-ping`
