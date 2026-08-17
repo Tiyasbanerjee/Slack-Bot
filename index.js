@@ -67,8 +67,8 @@ app.command("/raju-define", async({ack,respond,command})=>{
     try{
         const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`)
         const data = response.data[0];
-        const defination = data.meanings[0].definitions[0].definition;
-        const partOFSpeech = data.meanings[0].partOfSpeech;
+        const definition = data.meanings[0].definitions[0].definition;
+        const partOfSpeech = data.meanings[0].partOfSpeech;
         const example = data.meanings[0].definitions[0].example || "No example available";
         await respond({
             text:
