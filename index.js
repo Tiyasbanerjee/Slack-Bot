@@ -44,16 +44,17 @@ app.command("/raju-catfact",async({ack,respond})=>{
     }
 });
 
-app.command("raju-jike",async({ack,respond})=>{
+app.command("/raju-joke",async({ack,respond})=>{
     await ack();
     try{
         const response = await axios.get("https://official-joke-api.appspot.com/random_joke");
         await respond({
             text:
             `${response.data.setup}
-            
-            `
-        })
+            ${response.data.punchline}`
+        }) 
+    } catch(err){
+        await respond({text:"failed to fetch joke"});
     }
 })
 
