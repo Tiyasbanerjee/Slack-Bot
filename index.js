@@ -56,7 +56,7 @@ app.command("/raju-joke",async({ack,respond})=>{
     } catch(err){
         await respond({text:"failed to fetch joke"});
     }
-})
+});
 
 
 (async()=>{
