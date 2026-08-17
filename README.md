@@ -1,98 +1,84 @@
-# Slack-Bot
+<h1>Slack-bot raju</h1>
 
-**Raju** is a smart😎 bot who helps you in real time with English spelling and word meanings📝📝.
+this bot is capable of 4 things->
 
-[![Watch Raju Bot Demo](https://img.youtube.com/vi/euCq271Imf4/maxresdefault.jpg)](https://youtu.be/euCq271Imf4)
+* Tell facts related to cats
+* Tell you a joke
+* finding meaning of an english word
+* finding words with simmiler spelling
+
+---
+<h2>why specificly i made this bot like this?</h2>
+
+i sometimes forgets spellings , so i made it help me with that.
+and the 2ed use of it is to find a specific meaning of a word.
+
+---
+
+<h2>Demo vedio</h2>
+
 https://youtu.be/euCq271Imf4
-*Click the image above to watch the Raju Bot demo video!*
+---
 
-Suppose you are chatting with someone on Slack, and suddenly the person goes offline😭. Now you are feeling bored😞, so what can you do? Check if Raju is active!📍
 
-### 1. `/raju-ping`
+<h2>usage guide</h2>
 
-If Raju is active, it will send you a ping back📍 with the latency in milliseconds.
+first we might want to see all avalable commands, 
 
-Now you can ask him for a cat fact or a joke. But wait... you forgot the exact commands?😩😩😩😩
-
-### 2. `/raju-help`
-
-Just type this command and Raju will tell you all of his abilities💖, which are:
-
-* Telling you a cat fact💭
-* Telling you a joke💭💭
-* Helping you with word spelling📝
-* Helping you with word meanings📝💬📝
-
-Now you want to ask Raju for a cat fact or a joke using:
-
-### 3. `/raju-catfact` or 4. `/raju-joke`
-
-While you are doing all this, that person comes back online🥹 with a long message written like a piece of Shakespeare...🤯 and you don't know the meaning of a word!🤯🤯 Just ask Raju🥰✅✨:
-
-### 5. `/raju-define <your word>`
-
-Now you want to text them back, but you can't remember the exact spelling of a word🤔. You can't afford to look bad in front of them while they are writing in super polished English!🫣 So ask Raju:
-
-### 6. `/raju-spell <the word you forgot the spelling of>`
-
-So, did you like Raju? My Cat loved him a lot because he tells interesting facts about her!
-
+for that we will run ,
+```
+/raju-help
+```
+it will return 4 commands, 
+* /raju-joke 
+* /raju-catfact
+* /raju-define
+* /raju-spell
 
 ---
 ---
+* i ran /raju-ping
 
-## 🛠️ The Techy Part🚀
+<image src="Demo-resources/raju-ping.png">
 
-This runs on **Node.js** and uses two main libraries: `@slack/bolt` and `axios` for API requests.
+---
+* next, i ran, /raju-help
 
-**APIs used:**
+<image src="Demo-resources/raju-help.png">
 
-* **Cat Facts:** `[https://catfact.ninja/fact](https://catfact.ninja/fact)`
-* **Jokes:** `[https://official-joke-api.appspot.com/random_joke](https://official-joke-api.appspot.com/random_joke)`
-* **Word Meanings:** `[https://api.dictionaryapi.dev/api/v2/entries/en/](https://api.dictionaryapi.dev/api/v2/entries/en/)`
-* **Spelling Suggestions:** `[https://api.datamuse.com/words](https://api.datamuse.com/words)`
+---
+* let suppose i am getting boared, so i can run,  /raju-catfact  
+
+<image src="Demo-resources/raju-catfact.png">
+
+---
+* or i can also ask for a joke, /raju-joke
+
+<image src="Demo-resources/raju-joke.png">
+
+---
+* now i want it to find me meaning of a word . i will use /raju-define <'word'>
+
+<image src="Demo-resources/raju-define.png">
 
 ---
 
-## 🚀 How You Can Use This
+* and we can also ask it to cheak spellings, /raju-spell <'word'>
 
-Clone my repository (and if you like it, feel free to star the repo too!):
-`[https://github.com/Tiyasbanerjee/Slack-Bot.git](https://github.com/Tiyasbanerjee/Slack-Bot.git)`
+<image src="Demo-resources/raju-spell.png">
 
-1. **Clone the repo:**
-```bash
-git clone https://github.com/Tiyasbanerjee/Slack-Bot.git
-
-```
-
-
-2. **Open the project folder:**
-```bash
-cd Slack-Bot
+---
+---
+<h2>Installation guide</h2>
+run this commands,
 
 ```
-
-
-3. **Install dependencies:**
-```bash
-npm install
-
+git clone https://github.com/Tiyasbanerjee/Slack-Bot.git // clone the program
+cd Slack-Bot //move inside the Slack-Bot dir 
+touch .env  //save your bot and app token, name them SLACK_BOT_TOKEN and SLACK_APP_TOKEN
+npm install // install dependencies 
+node index.js // run the program
 ```
 
-
-4. **Set up Environment Variables:**
-Create a `.env` file inside the root folder and add your Slack tokens:
-```env
-SLACK_BOT_TOKEN=xoxb-...
-SLACK_APP_TOKEN=xapp-...
-
-```
-
-
-5. **Start the bot:**
-```bash
-node index.js
-
-```
-
-Now your bot is active and running—you are ready to go!
+---
+Thank You.
