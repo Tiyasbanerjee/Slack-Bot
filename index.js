@@ -16,13 +16,7 @@ app.command("/raju-ping",async({command,ack,respond})=>{ // registers a slach co
     const latency = Date.now() - start;
     await respond({text:`pong!\nLatency:${latency}ms`})
 });
-
-// /command-name is the slack command listers for
-// async allows asychronous opreations like api calls
-// ack() acknowledges the command request from slack
-// respond() sends a message back to slack
-
-
+//pings to raju and returns the latency of the bot
 app.command("/raju-help",async({ack,respond})=>{
     await ack();
     await respond({
@@ -33,7 +27,7 @@ app.command("/raju-help",async({ack,respond})=>{
         /raju-catfact - get a fact on cats`
     })
 });
-
+//returns a list of available commands
 app.command("/raju-catfact",async({ack,respond})=>{
     await ack();
     try{
@@ -43,7 +37,7 @@ app.command("/raju-catfact",async({ack,respond})=>{
         await respond({text: "Failed to fetch cat fact"});
     }
 });
-
+//returns a random cat fact from the catfact api
 app.command("/raju-joke",async({ack,respond})=>{
     await ack();
     try{
@@ -57,11 +51,43 @@ app.command("/raju-joke",async({ack,respond})=>{
         await respond({text:"failed to fetch joke"});
     }
 });
-
+//returns a random joke from the official-joke-api
+app.command("/raju-define", async({ack,respond,command})=>{
+    await ack();
+    const word = command.text.trim();
+    if (!word){
+        await respond({
+            text:`heyy mannn , i am a bot not a GOD... 
+            please tell me the word, because i cant read your mind...
+            if you need help, use /raju-help`
+        })
+        return;
+    }
+    try{
+        const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`)
+        const data = response.data[0];
+        const defination = data.meanings[0].definitions[0].definition;
+        const partOFSpeech = data.meanings[0].partOfSpeech;
+        const example = data.meanings[0].definitions[0].example || "No example available";
+        await respond({
+            text:`
+            Word: ${word}
+            Part of Speech: ${partOFSpeech}
+            Defination: ${defination}
+            Example: ${example}
+            `
+        });
+    }catch(err){
+        if (err.reponse && err.reponse.status === 404){
+            await respond({text:`Sorryyy, I couldn't find a definition for "${word}".`});
+        }else{
+            await respond({text:"Failed to fetch definition"});
+        }
+    }
+});
 
 (async()=>{
     await app.start();
     console.log("BOt is running");
 })();
-
-
+//starts the bot
