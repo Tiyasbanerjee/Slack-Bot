@@ -14,17 +14,19 @@ app.command("/raju-ping",async({command,ack,respond})=>{ // registers a slach co
     const start = Date.now();
     await ack();
     const latency = Date.now() - start;
-    await respond({text:`pong!\nLatency:${latency}ms`})
+    await respond({text:`🏓 *Pong!* | *Latency:* \`${latency}ms\``})
 });
 //pings to raju and returns the latency of the bot
 app.command("/raju-help",async({ack,respond})=>{
     await ack();
     await respond({
         text:
-        `Avalable Commands:
-        /raju-ping - Check the latency of the bot
-        /raju-help - Get a list of available commands
-        /raju-catfact - get a fact on cats`
+        `🤖 *Available Commands for Raju Bot:*\n\n` +
+        `• \`/raju-ping\` — Check the bot's server latency and connection status.\n` +
+        `• \`/raju-help\` — Display this menu with all available commands.\n` +
+        `• \`/raju-catfact\` — Fetch a random interesting cat fact.\n` +
+        `• \`/raju-define <word>\` — Look up definitions, part of speech, and usage examples.\n` +
+        `• \`/raju-spell <word>\` — Get instant spelling suggestions for misspelled words.`
     })
 });
 //returns a list of available commands
@@ -57,9 +59,7 @@ app.command("/raju-define", async({ack,respond,command})=>{
     const word = command.text.trim();
     if (!word){
         await respond({
-            text:`heyy mannn , i am a bot not a GOD... 
-            please tell me the word, because i cant read your mind...
-            if you need help, use /raju-help`
+            text:`⚠️ *I'm just a bot, not a mind reader!* \n> Please provide a word after the command. \n💡 _Need assistance? Try running_ \`/raju-help\``
         })
         return;
     }
@@ -70,15 +70,14 @@ app.command("/raju-define", async({ack,respond,command})=>{
         const partOFSpeech = data.meanings[0].partOfSpeech;
         const example = data.meanings[0].definitions[0].example || "No example available";
         await respond({
-            text:`
-            Word: ${word}
-            Part of Speech: ${partOFSpeech}
-            Defination: ${defination}
-            Example: ${example}
-            `
+            text:
+            `📖 *Dictionary Lookup: ${word.toUpperCase()}*\n\n` +
+            `• *Part of Speech:* _${partOfSpeech}_\n` +
+            `• *Definition:* ${definition}\n` +
+            `• *Example:* _"${example}"_`
         });
     }catch(err){
-        if (err.reponse && err.reponse.status === 404){
+        if (err.response && err.response.status === 404){
             await respond({text:`Sorryyy, I couldn't find a definition for "${word}".`});
         }else{
             await respond({text:"Failed to fetch definition"});
@@ -91,9 +90,7 @@ app.command("/raju-spell", async({ack,respond,command})=>{
     const word = command.text.trim();
     if (!word){
         await respond({
-            text:`heyy mannn , i am a bot not a GOD... 
-            please tell me a word, because i cant read your mind...
-            if you need help, use /raju-help`
+            text:`⚠️ *I'm just a bot, not a mind reader!* \n> Please provide a word after the command. \n💡 _Need assistance? Try running_ \`/raju-help\``
         })
         return;
     }
