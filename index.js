@@ -25,6 +25,7 @@ app.command("/raju-help",async({ack,respond})=>{
         `• \`/raju-ping\` — Check the bot's server latency and connection status.\n` +
         `• \`/raju-help\` — Display this menu with all available commands.\n` +
         `• \`/raju-catfact\` — Fetch a random interesting cat fact.\n` +
+        `• \`/raju-joke\` — Get a random joke.\n` +
         `• \`/raju-define <word>\` — Look up definitions, part of speech, and usage examples.\n` +
         `• \`/raju-spell <word>\` — Get instant spelling suggestions for misspelled words.`
     })
