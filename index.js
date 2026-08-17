@@ -85,7 +85,34 @@ app.command("/raju-define", async({ack,respond,command})=>{
         }
     }
 });
+// returns word meaning from the dictionary api.
+app.command("/raju-spell", async({ack,respond,command})=>{
+    await ack();
+    const word = command.text.trim();
+    if (!word){
+        await respond({
+            text:`heyy mannn , i am a bot not a GOD... 
+            please tell me a word, because i cant read your mind...
+            if you need help, use /raju-help`
+        })
+        return;
+    }
+    try{
+        const response = await axios.get(`https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&max=5`);
+        const suggestions = response.data;
+        if (suggestions.length === 0){
+            await respond({text:`No suggestions found for "${word}".`});
+            return;
+        }
 
+        const wordList = suggestions.map((item, index) => `${index + 1}. ${item.word}`).join("\n");
+        await respond({text: `Did you mean one of these words?\n${wordList}`});
+
+    } catch(err){
+        await respond({text: "Failed to fetch spell check results"});
+    }
+});
+//helps you keep your spelling correct by providing suggestions for misspelled words using the datamuse api.
 (async()=>{
     await app.start();
     console.log("BOt is running");
